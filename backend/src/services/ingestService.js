@@ -25,9 +25,10 @@ export async function ingestDocument(filePath, documentId) {
 
   // 4. Store in Qdrant
   await QdrantVectorStore.fromDocuments(chunks, embeddings, {
-    url: process.env.QDRANT_URL,
-    collectionName: process.env.QDRANT_COLLECTION,
-  });
+  url: process.env.QDRANT_URL,
+  apiKey: process.env.QDRANT_API_KEY,
+  collectionName: process.env.QDRANT_COLLECTION,
+});
 
   return {
     totalPages: docs.length,

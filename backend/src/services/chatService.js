@@ -5,12 +5,13 @@ import { embeddings } from '../config/qdrant.js';
 export async function askQuestion(documentId, question) {
   // Connect to existing Qdrant collection
   const vectorStore = await QdrantVectorStore.fromExistingCollection(
-    embeddings,
-    {
-      url: process.env.QDRANT_URL,
-      collectionName: process.env.QDRANT_COLLECTION,
-    }
-  );
+  embeddings,
+  {
+    url: process.env.QDRANT_URL,
+    apiKey: process.env.QDRANT_API_KEY,
+    collectionName: process.env.QDRANT_COLLECTION,
+  }
+);
 
   // Retriever with metadata filter
   const retriever = vectorStore.asRetriever({
