@@ -1,5 +1,5 @@
 import express from 'express';
-import { askQuestion } from '../services/chatService.js';
+import { askQuestionCorrective } from '../services/correctiveChatService.js';
 
 const router = express.Router();
 
@@ -13,7 +13,7 @@ router.post('/chat', async (req, res) => {
       });
     }
 
-    const result = await askQuestion(
+    const result = await askQuestionCorrective(
       documentId,
       question
     );
